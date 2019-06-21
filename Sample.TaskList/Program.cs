@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore;
+﻿using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Logging;
+using Sample.TaskList.Data;
 
 namespace Sample.TaskList
 {
@@ -14,6 +8,11 @@ namespace Sample.TaskList
     {
         public static void Main(string[] args)
         {
+            using (var context = new TaskDbContext())
+            {
+                context.Database.EnsureCreated();
+            }
+
             CreateWebHostBuilder(args).Build().Run();
         }
 

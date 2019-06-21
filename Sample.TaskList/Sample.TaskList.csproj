@@ -17,6 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Graph\Schema\Queries\" />
     <Folder Include="Graph\Types\Enum\" />
   </ItemGroup>
 
