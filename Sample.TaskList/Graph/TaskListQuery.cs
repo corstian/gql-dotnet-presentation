@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Sample.TaskList.Data;
 using Sample.TaskList.Graph.Types.Object;
+using System.Linq;
 
 namespace Sample.TaskList.Graph
 {
@@ -17,7 +18,7 @@ namespace Sample.TaskList.Graph
                 {
                     using (var db = new TaskDbContext())
                     {
-                        return db.Tasks;
+                        return db.Tasks.ToList();
                     }
                 });
 

@@ -10,6 +10,10 @@ namespace Sample.TaskList.Graph
             Field<TaskMutations>()
                 .Name("task")
                 .Resolve(c => new { });
+
+            Field<TaskListMutations>()
+                .Name("list")
+                .Resolve(c => new { });
         }
     }
 }
