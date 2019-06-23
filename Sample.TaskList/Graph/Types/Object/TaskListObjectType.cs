@@ -7,6 +7,10 @@ namespace Sample.TaskList.Graph.Types.Object
     {
         public TaskListObjectType()
         {
+            Field<GuidGraphType>()
+                .Name("cursor")
+                .Resolve(c => c.Source.Id);
+
             Field<StringGraphType>()
                 .Name("name")
                 .Resolve(c => c.Source.Name);
