@@ -7,8 +7,6 @@ namespace Sample.TaskList.Graph.Types.Object
     {
         public TaskListObjectType()
         {
-            Name = "TaskList";
-
             Field<StringGraphType>()
                 .Name("name")
                 .Resolve(c => c.Source.Name);

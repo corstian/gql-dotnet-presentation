@@ -7,8 +7,6 @@ namespace Sample.TaskList.Graph.Types.Object
     {
         public TaskObjectType()
         {
-            Name = "Task";
-            
             Field<IntGraphType>()
                 .Name("cursor")
                 .Resolve(context => context.Source.Id);

@@ -1,4 +1,5 @@
 ﻿using GraphQL.Types;
+using Sample.TaskList.Graph.Schema.Mutations;
 
 namespace Sample.TaskList.Graph
 {
@@ -6,7 +7,9 @@ namespace Sample.TaskList.Graph
     {
         public TaskListMutation()
         {
-
+            Field<TaskMutations>()
+                .Name("task")
+                .Resolve(c => new { });
         }
     }
 }
