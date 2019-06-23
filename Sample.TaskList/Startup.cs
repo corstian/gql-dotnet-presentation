@@ -1,5 +1,6 @@
 ﻿using GraphQL;
 using GraphQL.Server;
+using GraphQL.Server.Ui.Voyager;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -45,6 +46,12 @@ namespace Sample.TaskList
             app.UseWebSockets();
             app.UseGraphQLWebSockets<TaskListSchema>("/graph");
             app.UseGraphQL<TaskListSchema>("/graph");
+
+            app.UseGraphQLVoyager(new GraphQLVoyagerOptions
+            {
+                GraphQLEndPoint = "/graph",
+                Path = "/voyager"
+            });
         }
     }
 }
