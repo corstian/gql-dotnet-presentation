@@ -29,7 +29,8 @@ namespace Sample.TaskList.Graph
                     using (var db = new TaskDbContext())
                     {
                         return db.TaskLists
-                            .Include(q => q.Tasks);
+                            .Include(q => q.Tasks)
+                            .ToList();
                     }
                 });
         }
