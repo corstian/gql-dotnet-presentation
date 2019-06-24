@@ -17,7 +17,7 @@ namespace Sample.TaskList.Graph.Types.Object
 
             Field<DateTimeGraphType>()
                 .Name("created")
-                .Resolve(c => c.Source.Finished);
+                .Resolve(c => c.Source.Created);
 
             Field<DateTimeGraphType>()
                 .Name("finished")
