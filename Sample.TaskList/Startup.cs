@@ -1,6 +1,7 @@
 ﻿using GraphQL;
 using GraphQL.Server;
 using GraphQL.Server.Ui.Voyager;
+using GraphQL.Types;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
@@ -33,6 +34,9 @@ namespace Sample.TaskList
                 })
                 .AddGraphTypes()
                 .AddWebSockets();
+
+            // Not all types are registered. I do not know why.
+            services.TryAddSingleton<GuidGraphType>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
