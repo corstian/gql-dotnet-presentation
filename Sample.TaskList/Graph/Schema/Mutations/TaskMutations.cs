@@ -66,6 +66,25 @@ namespace Sample.TaskList.Graph.Schema.Mutations
                         return task;
                     }
                 });
+
+            Field<TaskObjectType>()
+                .Name("markCompleted")
+                .Argument<NonNullGraphType<StringGraphType>>("task", "The id of the task to mark as being completed")
+                .Resolve(context =>
+                {
+                    Guid.TryParse(context.GetArgument<string>("task"), out var taskGuid);
+
+                    using (var db = new TaskDbContext())
+                    {
+                        var task = db.Tasks.Find(taskGuid);
+
+                        task.Finished = DateTime.UtcNow;
+
+                        db.SaveChanges();
+
+                        return task;
+                    }
+                });
         }
     }
 }
