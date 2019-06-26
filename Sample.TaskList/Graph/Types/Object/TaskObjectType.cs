@@ -1,5 +1,6 @@
 ﻿using GraphQL.Types;
 using Sample.TaskList.Data;
+using System;
 
 namespace Sample.TaskList.Graph.Types.Object
 {
@@ -22,6 +23,10 @@ namespace Sample.TaskList.Graph.Types.Object
             Field<DateTimeGraphType>()
                 .Name("finished")
                 .Resolve(c => c.Source.Finished);
+
+            Field<BooleanGraphType>()
+                .Name("isCompleted")
+                .Resolve(c => c.Source.Finished != DateTime.MinValue);  // I'm sorry I was too lazy to make the datetime field nullablegit
         }
     }
 }

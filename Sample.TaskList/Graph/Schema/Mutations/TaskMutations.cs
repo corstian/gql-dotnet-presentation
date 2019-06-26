@@ -41,6 +41,8 @@ namespace Sample.TaskList.Graph.Schema.Mutations
 
                         db.SaveChanges();
 
+                        Subjects.TaskCreated.OnNext(task);
+
                         return entry.Entity;
                     }
                 });
@@ -81,6 +83,8 @@ namespace Sample.TaskList.Graph.Schema.Mutations
                         task.Finished = DateTime.UtcNow;
 
                         db.SaveChanges();
+
+                        Subjects.TaskCompleted.OnNext(task);
 
                         return task;
                     }
