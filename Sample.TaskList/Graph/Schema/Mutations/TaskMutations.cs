@@ -89,6 +89,25 @@ namespace Sample.TaskList.Graph.Schema.Mutations
                         return task;
                     }
                 });
+
+            Field<TaskObjectType>()
+                .Name("remove")
+                .Argument<NonNullGraphType<StringGraphType>>("task", "The id of the task to remove")
+                .Resolve(context =>
+                {
+                    Guid.TryParse(context.GetArgument<string>("task"), out var taskGuid);
+
+                    using (var db = new TaskDbContext())
+                    {
+                        var task = db.Tasks.Find(taskGuid);
+
+                        db.Tasks.Remove(task);
+
+                        db.SaveChanges();
+
+                        return task;
+                    }
+                });
         }
     }
 }
